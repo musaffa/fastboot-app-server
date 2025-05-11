@@ -47,6 +47,7 @@ class ExpressHTTPServer {
     if (this.distPath) {
       app.get('/', fastbootMiddleware);
       app.use(express.static(this.distPath, {
+        etag: true,
         lastModified: false
       }));
       app.get('/assets/*', function(req, res) {
